@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Welcome", "Welcome\Welcome.csproj", "{A2A643EB-60FC-4AD3-856C-7F3FC96BDE3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WelcomeExtended", "WelcomeExtended\WelcomeExtended.csproj", "{3DF8EA17-FA72-40F9-A742-8ECCFD90FE7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2A643EB-60FC-4AD3-856C-7F3FC96BDE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A643EB-60FC-4AD3-856C-7F3FC96BDE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A643EB-60FC-4AD3-856C-7F3FC96BDE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A643EB-60FC-4AD3-856C-7F3FC96BDE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF8EA17-FA72-40F9-A742-8ECCFD90FE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF8EA17-FA72-40F9-A742-8ECCFD90FE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF8EA17-FA72-40F9-A742-8ECCFD90FE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF8EA17-FA72-40F9-A742-8ECCFD90FE7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
