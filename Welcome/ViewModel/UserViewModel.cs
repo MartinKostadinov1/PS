@@ -17,8 +17,23 @@ public class UserViewModel
     public string Name
     {
         get { return _user.Name; }
-        set { _user.Name = value; }
 
+    }
+    
+    public string Email
+    {
+        get { return _user.Email; }
+
+    }
+    
+    public string PasswordCrypt
+    {
+        get => _user.Password;
+    }
+    
+    public string PasswordDecrypt
+    {
+        get => _user.GetDecryptPassword;
     }
     
     public UserRolesEnum Role

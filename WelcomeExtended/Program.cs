@@ -15,33 +15,42 @@ class Program
         UserData userData = new UserData();
 
         var log = new ActionOnError(Delegates.Log);
+        var fileLog = new ActionOnError(Delegates.LogToFile);
         
         var user = new User
         (
             "student",
+            "student@tu-sofia.bg",
             "123",
-            UserRolesEnum.STUDENT
+            UserRolesEnum.STUDENT,
+            null
         );
 
         var user2 = new User
         (
             "Student2",
+            "student2@tu-sofia.bg",
             "123",
-            UserRolesEnum.STUDENT
+            UserRolesEnum.STUDENT,
+            null
         );
         
         var user3 = new User
         (
             "Teacher",
+            "teacher@tu-sofia.bg",
             "1234",
-            UserRolesEnum.PROFESSOR
+            UserRolesEnum.PROFESSOR,
+            null
         );
         
         var user4 = new User
         (
             "Admin",
+            "admin@tu-sofia.bg",
             "12345",
-            UserRolesEnum.ADMIN
+            UserRolesEnum.ADMIN,
+            null
         );
 
         userData.AddUser(user);
@@ -49,25 +58,28 @@ class Program
         userData.AddUser(user3);
         userData.AddUser(user4);
 
-        string name, password;
-        
-        Console.WriteLine("Enter name: ");
-        name = Console.ReadLine();
-        
-        Console.WriteLine("Enter password: ");
-        password = Console.ReadLine();
 
-        if (UserHelper.ValidateUser(userData, name, password))
-        {
-            Console.WriteLine(UserHelper.ToString(UserHelper.GetUser(userData, name, password)));
-        }
-        else
-        {
-            log("User not found!");
-        }
-        
-        
 
+            string name, password;
+
+            Console.WriteLine("Enter name: ");
+            name = Console.ReadLine();
+
+            Console.WriteLine("Enter password: ");
+            password = Console.ReadLine();
+
+            if (UserHelper.ValidateUser(userData, name, password))
+            {
+                Console.WriteLine(UserHelper.ToString(UserHelper.GetUser(userData, name, password)));
+                
+                fileLog($"Login successful for user {name}!");
+            }
+            else
+            {
+                log("User not found!");
+                fileLog("Login not successful!");
+            }
+            
 
 
     }

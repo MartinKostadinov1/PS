@@ -6,10 +6,17 @@ namespace WelcomeExtended.Others;
 public class Delegates
 {
     public static readonly ILogger logger = LoggerHelper.GetLogger("Hello");
+    public static readonly ILogger fileLogger = LoggerHelper.GetFileLogger("Hello");
 
     public static void Log(string error)
     {
         logger.LogError(error);
+    }
+    
+    
+    public static void LogToFile(string error)
+    {
+        fileLogger.LogError(error);
     }
     
     public static void Log2(string error)
