@@ -13,9 +13,12 @@ public class DatabaseLog
     public string Message { get; set; }
     
     public string AdditionalInformation { get; set; }
-    
+
+    public DateTime DateTime { get; set; }
+
     public DatabaseLog()
     {
+        DateTime = DateTime.Now;
     }
     
     
@@ -23,6 +26,7 @@ public class DatabaseLog
     {
         Message = message;
         AdditionalInformation = additionalInformation;
+        DateTime = DateTime.Now;
     }
     
     

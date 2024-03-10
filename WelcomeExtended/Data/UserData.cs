@@ -1,3 +1,4 @@
+using Welcome.Helpers;
 using Welcome.Model;
 using Welcome.Others;
 
@@ -30,7 +31,7 @@ public class UserData
     {
         foreach (var user in _users)
         {
-            if (user.Name == name && user.Password == password)
+            if (user.Name == name && user.Password == password.Crypt())
             {
                 return true;
             }
@@ -42,15 +43,15 @@ public class UserData
     public bool ValidateUserLambda(string name, string password)
     {
         return _users
-            .FirstOrDefault(x => x.Name == name && x.Password == password) != null ? true : false;
+            .FirstOrDefault(x => x.Name == name && x.Password == password.Crypt()) != null ? true : false;
     }
 
 
     public bool ValidateUserLinq(string name, string password)
     {
         var ret = from user in _users
-            where user.Name == name && user.Password == password
-            select user.Id;
+            where user.Name == name && user.Password == password.Crypt()
+                  select user.Id;
         
         return ret.FirstOrDefault() != null ? true : false;
     }
@@ -58,7 +59,7 @@ public class UserData
     public User? GetUser(string name, string password)
     {
         var ret = from user in _users
-            where user.Name == name && user.Password == password
+            where user.Name == name && user.Password == password.Crypt()
             select user;
 
         return ret.FirstOrDefault();

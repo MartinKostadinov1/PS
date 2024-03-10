@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="WPF.Components.UsersList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF.Components"
+             xmlns:localExtras="clr-namespace:WPF.Extras"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <localExtras:PasswordConverter x:Key="PasswordConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <DataGrid Name="students" ItemsSource="{Binding}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#" IsReadOnly="True" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Password" IsReadOnly="True" Binding="{Binding Password, Converter={StaticResource PasswordConverter}}"/>
+                <DataGridTextColumn Header="Role" IsReadOnly="True" Binding="{Binding Role}" />
+                <DataGridTextColumn Header="Expires In" Binding="{Binding Expires}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

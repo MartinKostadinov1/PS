@@ -20,7 +20,7 @@ public class User
     
     public DateTime Expires { get; set; }
 
-    public string GetDecryptPassword => Password.Decrypt();
+    public string GetDecryptPassword() { return Password.Decrypt(); }
 
 
     public User()

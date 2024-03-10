@@ -6,7 +6,7 @@ namespace WelcomeExtended.Loggers;
 
 public class FileLogger: ILogger
 {
-    private string _filePath = "file_logger.txt";
+    private string _filePath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/file_logger.txt";
     
     //TODO maybe use an object instead of string for higher scope over the log message
     private readonly ConcurrentDictionary<int, string> _logMessages;
@@ -26,8 +26,16 @@ public class FileLogger: ILogger
         
         using (BinaryWriter writer = new BinaryWriter(File.Open(_filePath, File.Exists(_filePath) ? FileMode.Append : FileMode.OpenOrCreate)))
         {
-            writer.Write($"{message}\n");
-            
+            writer.Write("\n\n- LOGGER -\n");
+
+            var messageToBeLogged = new StringBuilder();
+            messageToBeLogged.Append($"[{logLevel}]");
+            messageToBeLogged.AppendFormat(" [{0}]", _name);
+
+            writer.Write(messageToBeLogged.ToString());
+            writer.Write($"\n {formatter(state, exception)}\n");
+            writer.Write("- LOGGER -");
+
             writer.Close();
         }
         _logMessages[eventId.Id] = message;

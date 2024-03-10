@@ -22,7 +22,7 @@ class Program
             var password = Console.ReadLine();
             
             var userRecord = (from user in users
-                where user.Name.Equals(username) && user.GetDecryptPassword.Equals(password)
+                where user.Name.Equals(username) && user.GetDecryptPassword().Equals(password)
                 select user).FirstOrDefault();
 
             Console.WriteLine(userRecord != null ? "Successful login!" : "Unsuccessful login!");
@@ -35,6 +35,12 @@ class Program
                 {
                     Console.WriteLine("Welcome ADMIN. Enter command: ");
                     command = Console.ReadLine();
+
+                    if (command != null && command.Equals("END"))
+                    {
+                        Console.WriteLine("Good day!");
+                        return;
+                    }
 
                     switch (command)
                     {

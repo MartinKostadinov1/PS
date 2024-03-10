@@ -14,10 +14,14 @@ class Program
     {
         UserData userData = new UserData();
 
-        var log = new ActionOnError(Delegates.Log);
-        var fileLog = new ActionOnError(Delegates.LogToFile);
-        var dbLog = new ActionOnError(Delegates.LogToDb);
-        
+        var log = new ActionOnEvent(Delegates.Log);
+        var fileLog = new ActionOnEvent(Delegates.LogToFile);
+        var dbLog = new ActionOnEvent(Delegates.LogToDb);
+
+        var logError = new ActionOnError(Delegates.LogError);
+        var fileLogError = new ActionOnError(Delegates.LogErrorToFile);
+        var dbLogError = new ActionOnError(Delegates.LogErrorToDb);
+
         var user = new User
         (
             "student",
@@ -59,31 +63,43 @@ class Program
         userData.AddUser(user3);
         userData.AddUser(user4);
 
+        string name, password;
 
+        Console.WriteLine("Enter name: ");
+        name = Console.ReadLine();
 
-            string name, password;
+        Console.WriteLine("Enter password: ");
+        password = Console.ReadLine();
 
-            Console.WriteLine("Enter name: ");
-            name = Console.ReadLine();
-
-            Console.WriteLine("Enter password: ");
-            password = Console.ReadLine();
-
+        try
+        {
             var message = "";
             if (UserHelper.ValidateUser(userData, name, password))
             {
                 Console.WriteLine(UserHelper.ToString(UserHelper.GetUser(userData, name, password)));
 
                 message = $"Login successful for user {name}!";
+                log(message);
+                fileLog(message);
+                dbLog(message);
             }
             else
             {
                 message = "User not found!";
+                logError(message);
+                fileLogError(message);
+                dbLogError(message);
             }
+            
 
-            log(message);
-            fileLog("Login not successful!");
-            dbLog("Login not successful!");
+        }
+        catch(Exception e)
+        {
+            logError(e.Message);
+            fileLogError(e.Message);
+            dbLogError(e.Message);
+        }
+           
 
     }
 }

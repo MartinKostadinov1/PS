@@ -33,7 +33,7 @@ public class UserViewModel
     
     public string PasswordDecrypt
     {
-        get => _user.GetDecryptPassword;
+        get => _user.GetDecryptPassword();
     }
     
     public UserRolesEnum Role

@@ -22,12 +22,18 @@ public class DbLogger: ILogger
         var message = formatter(state, exception);
 
         StringBuilder sb = new StringBuilder();
-        sb.Append("==DB LOG==");
-        sb.AppendFormat($"[{logLevel}]");
-        sb.AppendFormat($" [{_name}]\n");
-        sb.AppendFormat("==DB LOG==");
+       
+        sb.Append("- LOGGER -\n");
 
-        using(var context = new DatabaseContext())
+        var messageToBeLogged = new StringBuilder();
+        messageToBeLogged.Append($"[{logLevel}]");
+        messageToBeLogged.AppendFormat(" [{0}]", _name);
+
+        sb.Append(messageToBeLogged.ToString());
+        sb.Append($"\n {formatter(state, exception)}\n");
+        sb.Append("- LOGGER -");
+
+        using (var context = new DatabaseContext())
         {
             context.Database.EnsureCreated();
             context.Logs.Add(new DatabaseLog()
