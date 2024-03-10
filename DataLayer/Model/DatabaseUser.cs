@@ -12,11 +12,17 @@ public class DatabaseUser: User
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public override int? Id { get; set; }
 
-    public DatabaseUser(int id, string name, string email, string password, UserRolesEnum role, DateTime expires) : base(name, email,
+    public DatabaseUser() : base()
+    {
+    }
+
+    public DatabaseUser(string name, string email, string password, UserRolesEnum role, DateTime expires) : base(name, email,
         password, role, expires)
     {
-        Id = id;
     }
-    
-    
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Email: {Email}, Name: {Name}, Role: {Role}, Expires: {Expires.ToShortDateString()}";
+    }
 }

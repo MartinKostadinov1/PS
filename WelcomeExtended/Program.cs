@@ -16,6 +16,7 @@ class Program
 
         var log = new ActionOnError(Delegates.Log);
         var fileLog = new ActionOnError(Delegates.LogToFile);
+        var dbLog = new ActionOnError(Delegates.LogToDb);
         
         var user = new User
         (
@@ -68,19 +69,21 @@ class Program
             Console.WriteLine("Enter password: ");
             password = Console.ReadLine();
 
+            var message = "";
             if (UserHelper.ValidateUser(userData, name, password))
             {
                 Console.WriteLine(UserHelper.ToString(UserHelper.GetUser(userData, name, password)));
-                
-                fileLog($"Login successful for user {name}!");
+
+                message = $"Login successful for user {name}!";
             }
             else
             {
-                log("User not found!");
-                fileLog("Login not successful!");
+                message = "User not found!";
             }
-            
 
+            log(message);
+            fileLog("Login not successful!");
+            dbLog("Login not successful!");
 
     }
 }

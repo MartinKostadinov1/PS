@@ -7,7 +7,7 @@ public static class UserHelper
 {
     public static string ToString(this User user)
     {
-        return $"Id: {user.Id}, Name: {user.Name}, Role: {user.Role}";
+        return $"Id: {user.Id}, Email: {user.Email}, Name: {user.Name}, Role: {user.Role}, Expires: {user.Expires.ToShortDateString()}";
     }
 
     public static bool ValidateUser(this UserData userData, string name, string password)

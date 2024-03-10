@@ -21,7 +21,12 @@ public class User
     public DateTime Expires { get; set; }
 
     public string GetDecryptPassword => Password.Decrypt();
-    
+
+
+    public User()
+    {
+    }
+
 
     public User(string name, string email, string password, UserRolesEnum role, DateTime? expires)
     {
@@ -32,4 +37,5 @@ public class User
         Role = role;
         Expires = expires ?? DateTime.Now.AddDays(10);
     }
+    
 }

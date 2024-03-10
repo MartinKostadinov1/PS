@@ -18,4 +18,11 @@ public static class LoggerHelper
         loggerFactory.AddProvider(new FileLoggerProvider());
         return loggerFactory.CreateLogger(categoryName);
     }
+    
+    public static ILogger GetDbLogger(string categoryName)
+    {
+        var loggerFactory = new LoggerFactory();
+        loggerFactory.AddProvider(new DbLoggerProvider());
+        return loggerFactory.CreateLogger(categoryName);
+    }
 }

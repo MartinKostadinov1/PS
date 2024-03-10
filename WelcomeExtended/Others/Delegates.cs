@@ -5,8 +5,9 @@ namespace WelcomeExtended.Others;
 
 public class Delegates
 {
-    public static readonly ILogger logger = LoggerHelper.GetLogger("Hello");
-    public static readonly ILogger fileLogger = LoggerHelper.GetFileLogger("Hello");
+    public static readonly ILogger logger = LoggerHelper.GetLogger("LOGGER");
+    public static readonly ILogger fileLogger = LoggerHelper.GetFileLogger("FILE_LOGGER");
+    public static readonly ILogger dbLogger = LoggerHelper.GetDbLogger("DB_LOGGER");
 
     public static void Log(string error)
     {
@@ -19,10 +20,9 @@ public class Delegates
         fileLogger.LogError(error);
     }
     
-    public static void Log2(string error)
+    public static void LogToDb(string error)
     {
-        Console.WriteLine("- DELEGATES -");
-        Console.WriteLine($"{error}");
-        Console.WriteLine("- DELEGATES -");
+        dbLogger.LogError(error);
     }
+
 }
