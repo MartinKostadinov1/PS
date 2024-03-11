@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace WPF.Extras
+namespace UI.Extras
 {
     [ValueConversion(typeof(String), typeof(String))]
     public class PasswordConverter : IValueConverter

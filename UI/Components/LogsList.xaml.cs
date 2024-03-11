@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF.Components
+namespace UI.Components
 {
     /// <summary>
     /// Interaction logic for LogsList.xaml

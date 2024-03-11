@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,18 +6,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UI.Windows;
 
-namespace WPF.Windows
+namespace UI
 {
     /// <summary>
-    /// Interaction logic for LogsWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class LogsWindow : Window
+    public partial class MainWindow : Window
     {
-        public LogsWindow()
+        public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenLogsWindow(object sender, RoutedEventArgs e)
+        {
+            (new LogsWindow()).Show();
         }
     }
 }
