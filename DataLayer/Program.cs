@@ -33,7 +33,12 @@ class Program
                 string? command = "";
                 while (command != null && !command.Equals("END"))
                 {
+                    users = context.Users.ToList();
                     Console.WriteLine("Welcome ADMIN. Enter command: ");
+                    Console.WriteLine("1. Add - add new user");
+                    Console.WriteLine("2. List - list all users");
+                    Console.WriteLine("3. Delete - delete user");
+                    Console.WriteLine("4. END - exit the program");
                     command = Console.ReadLine();
 
                     if (command != null && command.Equals("END"))
